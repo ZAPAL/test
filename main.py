@@ -19,8 +19,8 @@ bot = Bot(token=TOKEN, session=session)
 dp = Dispatcher()
 
 # Инициализация модели Whisper (tiny - самая быстрая для CPU)
-model = WhisperModel("tiny", device="cpu", compute_type="int8")
-
+#model = WhisperModel("tiny", device="cpu", compute_type="int8")
+model = WhisperModel("tiny", device="cpu", compute_type="int8", cpu_threads=1, download_root="./model_cache")
 # --- РАБОТА С БАЗОЙ ДАННЫХ ---
 def init_db():
     conn = sqlite3.connect("tasks.db")
